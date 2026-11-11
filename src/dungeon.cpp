@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 
+#include "goblin.h"
+#include "troll.h"
 #include "input.h"
 #include "item.h"
 #include "monster.h"
@@ -117,8 +119,8 @@ int play_dungeon() {
   connect_rooms(rooms[1], Direction::south, rooms[4]);
   connect_rooms(rooms[2], Direction::south, rooms[5]);
   rooms[4].set_trap_damage(40);
-  // TODO (Lab 13, Task 4): rooms[3].set_monster(new Goblin{});
-  //                         rooms[5].set_monster(new Troll{});
+  rooms[3].set_monster(new Goblin{});
+  rooms[5].set_monster(new Troll{});
 
   rooms[0].add_item(Item{"lantern", "A brass lantern with oil left in it.", 2});
   rooms[1].add_item(Item{"sword", "A heavy iron sword.", 5});

@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include "monster.h"
 #include "direction.h"
 #include "item.h"
 
@@ -23,8 +24,17 @@ public:
   /// @param description one or two sentences shown by `look`
   Room(std::string name, std::string description);
 
+  /// Destructor to clean up any monster in the room.
+  ~Room();
+
   /// @return the room's name
   const std::string &name() const;
+
+ /// @param monster pointer to the monster owned by the room
+ void set_monster(Monster *monster);
+
+ /// @return pointer to the monster in this room, or nullptr if none
+  Monster *monster() const;
 
   /// @return the room's description
   const std::string &description() const;
@@ -70,6 +80,7 @@ private:
   Item m_items[max_room_items];
   int m_item_count;
   int m_trap_damage;
+  Monster *m_monster{nullptr};
 };
 
 #endif // ARCADE_ROOM_H
