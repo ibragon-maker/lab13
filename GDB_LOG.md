@@ -32,15 +32,18 @@ One sentence on what `ptype Hangman` revealed about inheritance:
 
 ## Week 13 (Lab 13)
 
-Each partner writes their own section. Put your name here:
+Each partner writes their own section. Put your name here: Ibrahim Gonzalez
 
 ### A Game pointer with a virtual play()
 
-`set print object on`, then `print *g` (paste it). What changed from Week 12?
+`set print object on`, then `print *g` (paste it). What changed from Week 12?:
+Without set print object on, GDB statically views the pointer as the base type Game. Once enabled, GDB uses the virtual table pointer (_vptr.Game) to dynamically identify and display the actual runtime object type (Hangman).
 
-`info vtbl *g` (paste it). Which functions are in the table?
+`info vtbl *g` (paste it). Which functions are in the table?:
+The virtual table lists the derived class destructors (<Hangman::~Hangman()>) and the overridden virtual function (<Hangman::play()>).
 
 Where `step` into `g->play()` landed, and how that compares with Week 12:
+Stepping into g->play() performs dynamic dispatch at runtime via the vtable and lands directly inside Hangman::play(), whereas in Week 12 (static dispatch) it executed the base class function directly.
 
 ### A Monster pointer
 
